@@ -1,5 +1,6 @@
 body {
   width: auto;
+  background-color: #fff;
   background-image: url("cover.png");
   background-size: cover;
   background-position: middle;
