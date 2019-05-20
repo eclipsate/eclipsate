@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Dive On In | Everyone Has the Right to Be Who They Are</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
+   <script src="js/sketch.js"></script>
+   <script src="js/p5.dom.js"></script>
+   <script src="js/tone.js"></script>
+   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
+   <script src="https://unpkg.com/tone"></script>
+   <script src="https://unpkg.com/@tonejs/ui"></script>
+   <script language="javascript" type="text/javascript" src="path/to/p5.dom.js"></script>
+
+   <link rel="stylesheet" href="css/style2.css">
+   <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+   <link rel="shortcut icon" href="img/favicon.png">
+</head>
+
+<body>
+   <a href="cover.html"><h1>everyone has the right to be who they are</h1></a>
+
+   <p>Sexuality and gender are a spectrum and something that we don't choose. Just as we don't choose to be tall or short, we don't choose to be straight or gay. This interactive project aims to connect with people and get them to think about life from the point of view of those in the LGBTQ community. Many faces everyday struggles that some hetrosexual people don't even realize and can't relate to, though this piece aims to bridge that gap and encourage support for transgender and gay rights.</p>
+<br>
+   <div class="flex-container">
+      <div class="box">
+         <div id="p5-sketch">
+            </div>
+         </div>
+
+         <div class="box">
+            <p>Putting labels on your sexuality is a very constraining and daunting task for most people - especially young people who are still figuring themselves out. Even if you've always thought of yourself as hetrosexual, you may find that when you sit down and think about it, you're not sure which sex you're attracted to and why. The interactive piece on the left was created in p5.js and aims to portray the suffocating feeling that defining your gender or sexuality can cause for some people. Type your sexual orientation into the text box on the left and see what happens.
+            </p>
+      </div>
+   </div>
+
+   <hr>
+
+   <p>Press any letter on the keyboard in the input box below to hear what sound it will make. You can experiment by typing a sentence about your personal relationship to gay and transgender rights. ((Depending on how fast you type, you'll have an interesting song on your hands!)) This input also serves as a safe space for you to express any ideas or feelings you have without judgement - simply refresh the page and your words will be gone.</p>
+   <br>
+
+<center>
+   <textarea rows="5" cols="100">
+      Why are gay and transgender rights important to you?
+   </textarea>
+</center>
+
+<br>
+<hr>
+
+<p>As Barack Obama once said, "I think what you're seeing is a profound recognition on the part of the American people that gays and lesbians and transgender persons are our brothers, our sisters, our children, our cousins, our friends, our co-workers, and that they've got to be treated like every other American. And I think that principle will win out". While society has a ways to go, we've made great strides as a whole to become more accepting and understanding of the LBGTQ community. The next page of this project will take you to another area of self-reflection.</p>
+
+<center>
+   <div class="button">
+      <a href="mirror.html" target="_blank">take a look in the mirror</a>
+   </div>
+</center>
+
+<script>
+let octave = 4;
+const keys = [];
+let prevKey = 0;
+
+const Instruments = {
+  // https://github.com/stuartmemo/qwerty-hancock
+  keyboard: {
+    a: 'Cl',
+    w: 'C#l',
+    e: 'C4',
+    r: 'E4',
+    i: 'G4',
+    s: 'Dl',
+    e: 'D#l',
+    d: 'El',
+    f: 'B4',
+    t: 'F#l',
+    g: 'Gl',
+    y: 'G#l',
+    h: 'Al',
+    u: 'A#l',
+    j: 'Bl',
+    k: 'Cu',
+    o: 'C#u',
+    l: 'Du',
+    p: 'D#u',
+    f: 'Eu',
+    m: 'Fu',
+    z: 'F#u',
+    x: 'C2',
+    v: 'C5',
+    c: 'E5',
+    b: 'C6',
+    n: 'B5',
+  },
+};
+
+let instrument = Instruments.keyboard;
+
+const keyToNote = key => {
+  const note = instrument[ key ];
+  if ( !note ) {
+    return;
+  }
+
+  return Tone.Frequency(
+    note
+      .replace( 'l', octave )
+      .replace( 'u', octave + 1 )
+  ).toNote();
+};
+
+const onKeyDown = (() => {
+  let listener;
+
+  return synth => {
+    document.removeEventListener( 'keydown', listener );
+
+    listener = event => {
+      const { key } = event;
+
+      // Only trigger once per keydown event.
+      if ( !keys[ key ] ) {
+        keys[ key ] = true;
+
+        const note = keyToNote( key );
+        if ( note ) {
+          synth.triggerAttack( note );
+          prevKey = key;
+        }
+      }
+    };
+
+    document.addEventListener( 'keydown', listener );
+  };
+})();
+
+const onKeyUp = (() => {
+  let listener;
+  let prev;
+
+  return synth => {
+    // Clean-up.
+    if ( prev ) {
+      prev.triggerRelease();
+    }
+
+    document.removeEventListener( 'keyup', listener );
+
+    prev = synth;
+    listener = event => {
+      const { key } = event;
+      if ( keys[ key ] ) {
+        keys[ key ] = false;
+
+        const note = keyToNote( key );
+        if ( synth instanceof Tone.PolySynth ) {
+          synth.triggerRelease( note );
+        } else if ( note && key === prevKey ) {
+          // Trigger release if this is the previous note played.
+          synth.triggerRelease();
+        }
+      }
+    };
+
+    document.addEventListener( 'keyup', listener );
+  };
+})();
+
+// Octave controls.
+document.addEventListener( 'keydown', event => {
+  // Decrease octave range (min: 0).
+  if ( event.key === 'z' ) { octave = Math.max( octave - 1, 0 ); }
+  // Increase octave range (max: 10).
+  if ( event.key === 'x' ) { octave = Math.min( octave + 1, 9 ); }
+});
+
+// Init.
+(() => {
+  const synth = new Tone.PolySynth( 10 );
+  synth.toMaster();
+
+  onKeyDown( synth );
+  onKeyUp( synth );
+})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+body {
+  width: auto;
+  background: {
+      image: url("cover.png");
+      size: cover;
+      position: middle;
+      repeat: no-repeat;
+      }
+  color: #47097c;
+  padding: 3.2em;
+  line-height: 1.5em;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  font: {
+      size: 14px;
+      family: 'Special Elite', cursive;
+      weight: 300;
+      }
+}
+
+h1 {
+  letter-spacing: 0.1em;
+  line-height: 2.1em;
+  color: #47097c;
+  text-align: center;
+  font-size: 4em;
+}
+
+.button {
+  width: 11em;
+  font-size: 1.2em;
+  padding: 0.5em;
+  border: 2px solid #000;
+  background-color: transparent;
+  margin: 2em 0em 2em 0em;
+  color: #47097c;
+}
+
+.button:hover {
+  background-color: #000;
+  border: 2px solid #fff;
+  letter-spacing: 0.3em;
+  transition: all 3s ease 2s;
+}
+
+a {
+    &:hover {
+  color: #fff;
+} color: #47097c;
+  text-decoration: none;
+} 
+
+h2 {
+  font-size: 1.4em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+h3 {
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
+hr {
+  width: 75%;
+  margin-bottom: 2em;
+  color: #3ea086;
+}
+
+img {
+  border: 1px solid #3ea086;
+  padding: 0.5em;
+}
+
+//#text-right {
+//  margin: auto;
+//  width: 85%;
+//  padding-bottom: 1em;
+//}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+  width: 100%;
+  padding-bottom: 1.5em;
+      .box {
+  margin: auto;
+  overflow: visible;
+  text-align: justify;
+  }
+}
+
+#main {
+  margin: auto;
+}
