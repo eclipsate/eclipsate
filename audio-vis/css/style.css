@@ -1,0 +1,136 @@
+body {
+  width: auto;
+  background-image: url("images/try2.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #445877;
+  padding: 3em;
+  line-height: 1.5em;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  font-size: 14px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  letter-spacing: 0.1em;
+  line-height: 2.1em;
+  color: #445877;
+  border-bottom: 2px solid #000;
+  font-family: 'Gugi', cursive;
+  text-align: center;
+  font-size: 4em;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.button {
+  width: 14em;
+  background: #333;
+  border: 2px solid;
+  border-radius: 10;
+  color: #fff;
+  letter-spacing: 3px;
+  font-size: 0.9em;
+  height: 45px;
+  /*  font-weight: 300;*/
+  line-height: 45px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #c4c4c4;
+  color: #000;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+
+a:hover {
+  color: #000;
+  -moz-transition: all 0.5s ease-in-out 0s;
+  -ms-transition: all 0.5s ease-in-out 0s;
+  -o-transition: all 0.5s ease-in-out 0s;
+  -webkit-transition: all 0.5s ease-in-out 0s;
+  transition: all 0.5s ease-in-out 0s;
+}
+
+h2 {
+  font-size: 1.4em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+h3 {
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
+hr {
+  width: 75%;
+  margin-bottom: 2em;
+  color: #3ea086;
+}
+
+img {
+  border: 1px solid #3ea086;
+  padding: 0.5em;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+  width: 100%;
+  padding-bottom: 1.5em;
+}
+
+.flex-container .box {
+  margin: auto;
+  overflow: visible;
+  text-align: justify;
+}
+
+iframe {
+  border: 2px solid #000;
+  margin-left: 15%; 
+}
+
+#main {
+  margin: auto;
+}
+
+#thefile {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+#canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+audio {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+}
