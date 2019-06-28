@@ -1,0 +1,153 @@
+body {
+    background-image: url("../img/background.jpg");
+    background-attachment: fixed;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+p {
+    color: lightgray;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+h1 {
+font-size: 50px;
+}
+
+h2 {
+    font-variant: small-caps;
+    font-size: 19px;
+    letter-spacing: 0.1em;
+    color: lightgray;
+    text-align: center;
+}
+
+h3 {
+    font-size: 13px;
+    line-height: 21px;
+    color: lightgray;
+    text-align: center;
+}
+
+a {
+    color: #fff;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #8665cf;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    /*  text-align:center;*/
+    overflow: hidden;
+}
+
+ul li:first-child {
+    padding: 30px;
+    padding-right: 10em;
+    float: left;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: normal;
+    font-size: 33px;
+    list-style-type: none;
+}
+
+ul li {
+    padding: 30px;
+    padding-right: 25px;
+    float: left;
+    font-size: 15px;
+    line-height: 15px;
+    list-style-type: none;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 60px;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.flex-container .box {
+    width: 50%;
+    text-align: left;
+    padding-right: 5em;
+    margin: 30px;
+    line-height: 65px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+form {
+margin-top: -1em;
+}
+
+input[type=text] {
+  width: 90%;
+  padding: 12px 20px;
+  color: #fff;
+  margin: 0px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  background-color: rgba(130, 130, 130, 0.3);
+  box-sizing: border-box;
+  border: 2px solid #c4c4c4;
+  border-radius: 4px;
+}
+
+input[type=button] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  background-color: #44b3fc;
+  border-radius: 4px;
+}
+
+#submit:active {
+background-color: #000;
+}
+
+footer {
+    color: lightgray;
+    list-style-type: none;
+}
+
+
+ol {
+    margin: 0;
+    padding-right: 10px;
+    overflow: hidden;
+    float: right;
+}
+
+ol li:first-child {
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 55em;
+    float: left;
+    font-size: 10px;
+    list-style-type: none;
+    font-variant: normal;
+}
+
+ol li {
+    padding: 20px;
+    text-transform: uppercase;
+    padding-right: 20px;
+    float: left;
+    font-size: 12px;
+    line-height: 15px;
+    list-style-type: none;
+    letter-spacing: 0.1em;
+}
